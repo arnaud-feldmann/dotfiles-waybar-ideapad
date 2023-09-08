@@ -2,7 +2,7 @@
 
 CHARGING_ICON=""
 SAVE_MODE_ICON=""
-SAVE_MODE_STOP_ICON=""
+SAVE_MODE_STOP_ICON="󱈑"
 BAT_ICONS=("" "" "" "" "")
 BAT="/sys/class/power_supply/BAT1"
 
