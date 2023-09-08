@@ -1,0 +1,87 @@
+{
+	"layer": "top",
+		"modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
+		"modules-center": ["clock", "custom/weather"],
+		"modules-right": ["network", "cpu", "memory", "pulseaudio" ,"custom/batt"],
+		"sway/window": {
+			"max-length": 50
+		},
+		"clock": {
+			"format": "{:%A %d %b  %H:%M}",
+			"tooltip": true,
+			"tooltip-format": "<tt><small>{calendar}</small></tt>",
+			"calendar": {
+				"mode"          : "year",
+				"mode-mon-col"  : 3,
+				"weeks-pos"     : "",
+				"on-scroll"     : 1,
+				"on-click-right": "mode",
+				"format": {
+					"months":     "<span color='#228b22'><b>{}</b></span>",
+					"days":       "<span color='#d3d3d3'>{}</span>",
+					"weekdays":   "<span color='#32cd32'><b>{}</b></span>",
+					"today":      "<span color='#00ff00'><b>{}</b></span>"
+				}
+			},
+			"actions":  {
+				"on-click": "shift_up",
+				"on-click-right": "shift_down"
+			}	
+		},
+		"memory": {
+			"interval": 30,
+			"format": "{used:0.1f}G/{total:0.1f}G ",
+			"tooltip": false,
+			"on-click": "foot gtop"
+		},
+		"cpu": {
+			"interval": 10,
+			"format": "{usage}% ",
+			"max-length": 10,
+			"on-click": "foot gtop"
+		},
+		"network": {
+			"interface": "wlp1s0",
+			"format": "{ifname}",
+			"format-wifi": "{essid} ({signalStrength}%) ",
+			"format-ethernet": "{ipaddr}/{cidr} ",
+			"format-disconnected": "", //An empty format will hide the module.
+			"tooltip-format": "{ifname} via {gwaddr} ",
+			"tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+			"tooltip-format-ethernet": "{ifname} ",
+			"tooltip-format-disconnected": "Déconnecté",
+			"max-length": 50,
+			"on-click": "nm-connection-editor"
+		},
+		"pulseaudio": {
+			"format": "{volume}% {icon}",
+			"format-bluetooth": "{volume}% {icon}",
+			"format-muted": "",
+			"format-icons": {
+				"headphone": "",
+				"hands-free": "",
+				"headset": "",
+				"phone": "",
+				"portable": "",
+				"car": "",
+				"default": ["", ""]
+			},
+			"scroll-step": 1,
+			"on-click": "pavucontrol"
+		},
+		"custom/batt": {
+			"interval": 30,
+			"exec": "$HOME/.config/waybar/battery.sh",
+			"on-click": "echo $((! $(cat /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode) )) | sudo tee /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode > /dev/null && pkill -RTMIN+8 waybar",
+			"max-length": 50,
+			"tooltip": false,
+			"signal": 8
+		},
+		"custom/weather": {
+			"tooltip": false,
+			"exec": "curl 'https://wttr.in/Paris?format=1'",
+			"on-click": "firefox https://meteofrance.com/previsions-meteo-france/paris/75000",
+			"interval": 800
+		}
+
+}
