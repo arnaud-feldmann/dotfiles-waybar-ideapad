@@ -1,0 +1,58 @@
+* {
+	font-family: IosevkaNerdFont;
+	font-size: 12pt;
+	color: white;
+	border: none;
+	border-radius: 0;
+	box-shadow: none;
+	text-shadow: none;
+	transition-duration: 0s;
+}
+
+window#waybar {
+	opacity: 0.80;
+	color: #383c4a;
+}
+
+#window,
+#pulseaudio,
+#custom-weather,
+#cpu {
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+
+#memory {
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+
+#custom-weather {
+	padding-left: 2rem;
+	font-weight: bold;
+}
+
+#custom-batt {
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+
+#network {
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+
+#workspaces {
+	background: #4b5162;
+	font-weight: bold;
+	border-radius: 0 1rem 1rem 0;
+}
+#workspaces button {
+	background: transparent;
+}
+
+#workspaces button.focused {
+	background: #32cd32;
+	border-radius: 1rem;
+}
+
