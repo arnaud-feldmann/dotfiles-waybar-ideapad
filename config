@@ -1,9 +1,10 @@
 {
 	"layer": "top",
-		"modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
+		"modules-left": ["sway/workspaces", "sway/window"],
 		"modules-center": ["clock", "custom/weather"],
 		"modules-right": ["network", "cpu", "memory", "pulseaudio" ,"custom/batt"],
 		"sway/window": {
+			"format": "{app_id}",
 			"max-length": 50
 		},
 		"clock": {
